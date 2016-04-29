@@ -11,7 +11,9 @@ import logging
 import os
 import multiprocessing
 from threading import Timer
-from pyftpdlib.servers import FTPServer
+from pyftpdlib.servers import FTPServer as ftpserver
+from pyftpdlib.authorizers import DummyAuthorizer
+from pyftpdlib.handlers import FTPHandler
 from encoder_cfg import pyro_host, pyro_port, ftp_port, ftp_user, ftp_pass
 from encoder_cfg import RUNNING, Task, max_tries, getLanIP
         
@@ -234,13 +236,13 @@ def startFTPServer():
     if not os.path.exists(homeDir):
         os.makedirs(self.homeDir)
     print homeDir
-    auth = ftpserver.DummyAuthorizer()
+    auth = DummyAuthorizer()
     auth.add_user(ftp_user,ftp_pass,homeDir,perm='elrwda')
     
-    handler = ftpserver.FTPHandler
+    handler = FTPHandler
     handler.authorizer = auth
     address = ("0.0.0.0",ftp_port)
-    ftpd = ftpserver.FTPServer(address,handler)
+    ftpd = ftpserver(address,handler)
     ftpd.serve_forever()
     
 def startCentralEncoder():
