@@ -11,7 +11,7 @@ import logging
 import os
 import multiprocessing
 from threading import Timer
-from pyftpdlib import ftpserver
+from pyftpdlib.servers import FTPServer
 from encoder_cfg import pyro_host, pyro_port, ftp_port, ftp_user, ftp_pass
 from encoder_cfg import RUNNING, Task, max_tries, getLanIP
         
