@@ -1,7 +1,7 @@
 #!/usr/bin/python
-    """
-        FinlayDaG33k
-    """
+"""
+HBC by FinlayDaG33k under the MIT License
+"""
 import Pyro4
 import Pyro4.naming
 from Pyro4.naming import NamingError

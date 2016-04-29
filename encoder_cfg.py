@@ -1,7 +1,7 @@
 #!/usr/bin/python
-    """
-        FinlayDaG33k
-    """
+"""
+HBC by FinlayDaG33k under the MIT License
+"""
 import datetime
 import socket
 import re
